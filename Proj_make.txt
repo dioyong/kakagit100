@@ -1,0 +1,27 @@
+# 개발환경
+os : windows 10 pro 64-bit
+python : 3.7.3
+node : 14.15.0
+npm : 6.14.8
+yarn : 1.22.10
+
+# yarn 설치
+npm install -g yarn
+
+# expo 설치
+npm install -g expo-cli
+
+# expo 회원 가입
+https://expo.io/
+
+# 로컬에서 expo 로그인
+expo login --username "expo 가입시 입력한 username"
+
+# expo 로 프로젝트 생성(작업할 디렉토리로 이동해서)
+expo init 프로젝트 이름
+expo init weather_min
+
+# expo 프로젝트 실행
+프로젝트 디렉토리로 이동
+expo start
+브라우저에 보이는 qr 코드를 expo 클라이언트를 실행 시켜 읽으면 폰에서 앱을 확인 할 수 있다. 
