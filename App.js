@@ -1,59 +1,75 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
+import { StatusBar } from 'expo-status-bar';
+import React from 'react';
+import { StyleSheet, Text, View, ScrollView } from 'react-native';
 
-import React, {Component} from 'react';
-import { StyleSheet, View, Text, Image, Button, ImagePickerIOS } from 'react-native';
-import ImagePicker from 'react-native-image-picker';
+export default function App() {
 
-class App extends Component {
-  state = {
-    avatar: ''
-  }
+  // console.disableYellowBox = true;
 
-  addImage = () => {
-    ImagePicker.launchCamera({}, Response=>{
-      this.setState({
-        avatar: response.uri
-      })
-    })
-  }
-
-  render() {
-    return (
-      <View style={styles.container}>
-        <Image
-          source={{uri:this.state.avatar}}
-          style={styles.avatar}
-        />
-
-        <Button
-          title="Add an Image"
-          onPress={()=>this.addImage()}
-        />
+  return (
+    <ScrollView style={styles.container}>
+    
+      <View style={styles.textContainer}>
+        <Text style={styles.textStyle}> 1. 영역을 충분히 갖는 텍스트</Text>
       </View>
-    )
-  }
-}
 
+      <View style={styles.textContainer}>
+        <Text style={styles.textStyle}> 영역을 갖는 텍스트</Text>
+      </View>
+
+      <View style={styles.textContainer}>
+        <Text style={styles.textStyle}> 2. 영역을 충분히 갖는 텍스트</Text>
+      </View>
+
+
+      <View style={styles.textContainer}>
+        <Text style={styles.textStyle}> 3. 영역을 충분히 갖는 텍스트</Text>
+      </View>
+
+
+      <View style={styles.textContainer}>
+        <Text style={styles.textStyle}> 4. 영역을 충분히 갖는 텍스트</Text>
+      </View>
+
+      <View style={styles.textContainer}>
+        <Text style={styles.textStyle}> 5. 영역을 충분히 갖는 텍스트</Text>
+      </View>
+
+
+      <View style={styles.textContainer}>
+        <Text style={styles.textStyle}> 6. 영역을 충분히 갖는 텍스트</Text>
+      </View>
+
+
+      <View style={styles.textContainer}>
+        <Text style={styles.textStyle}> 7. 영역을 충분히 갖는 텍스트</Text>
+      </View>
+
+      <View style={styles.textContainer}>
+        <Text style={styles.textStyle}> 8. 영역을 충분히 갖는 텍스트</Text>
+      </View>
+
+      <View style={styles.textContainer}>
+        <Text style={styles.textStyle}> 9. 영역을 충분히 갖는 텍스트</Text>
+      </View>
+
+     </ScrollView>
+  );
+}
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#e4ab26'
+    backgroundColor: '#fff',
   },
-  avatar: {
-    width: '100%',
-    height: 400 
-  }
-
-
+  textContainer: {
+    height: 100,
+    borderColor: '#000',
+    borderWidth: 1,
+    borderRadius: 10,
+    margin: 10,
+  },
+  textStyle: {
+    textAlign: 'center'
+  },
 });
-
-export default App;
