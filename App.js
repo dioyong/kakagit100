@@ -1,62 +1,32 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View, ScrollView } from 'react-native';
-
+import React from 'react'
+import { StyleSheet, Text, View, Button, Alert } from 'react-native';
 export default function App() {
-
-  // console.disableYellowBox = true;
-
   return (
-    <ScrollView style={styles.container}>
-    
+    <View style={styles.container}>
       <View style={styles.textContainer}>
-        <Text style={styles.textStyle}> 1. 영역을 충분히 갖는 텍스트</Text>
+        <Text style={styles.textStyle}>아래 버튼을 눌러주세요</Text>
+        {/* 버튼 onPress 속성에 일반 함수를 연결 할 수 있습니다. */}
+        <Button
+          style={styles.buttonStyle}
+          title="버튼입니다 "
+          color="#f194ff"
+          onPress={function () {
+            Alert.alert('팝업 알람입니다!!')[스파르타온라인] 앱개발 종합반 - 2주차 41
+          }}
+        />
+        {/* ES6 문법으로 배웠던 화살표 함수로 연결 할 수도 있습니다. */}
+        <Button
+          style={styles.buttonStyle}
+          title="버튼입니다 "
+          color="#FF0000"
+          onPress={() => {
+            Alert.alert('팝업 알람입니다!!')
+          }}
+        />
       </View>
-
-      <View style={styles.textContainer}>
-        <Text style={styles.textStyle}> 영역을 갖는 텍스트</Text>
-      </View>
-
-      <View style={styles.textContainer}>
-        <Text style={styles.textStyle}> 2. 영역을 충분히 갖는 텍스트</Text>
-      </View>
-
-
-      <View style={styles.textContainer}>
-        <Text style={styles.textStyle}> 3. 영역을 충분히 갖는 텍스트</Text>
-      </View>
-
-
-      <View style={styles.textContainer}>
-        <Text style={styles.textStyle}> 4. 영역을 충분히 갖는 텍스트</Text>
-      </View>
-
-      <View style={styles.textContainer}>
-        <Text style={styles.textStyle}> 5. 영역을 충분히 갖는 텍스트</Text>
-      </View>
-
-
-      <View style={styles.textContainer}>
-        <Text style={styles.textStyle}> 6. 영역을 충분히 갖는 텍스트</Text>
-      </View>
-
-
-      <View style={styles.textContainer}>
-        <Text style={styles.textStyle}> 7. 영역을 충분히 갖는 텍스트</Text>
-      </View>
-
-      <View style={styles.textContainer}>
-        <Text style={styles.textStyle}> 8. 영역을 충분히 갖는 텍스트</Text>
-      </View>
-
-      <View style={styles.textContainer}>
-        <Text style={styles.textStyle}> 9. 영역을 충분히 갖는 텍스트</Text>
-      </View>
-
-     </ScrollView>
+    </View>
   );
 }
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -64,12 +34,9 @@ const styles = StyleSheet.create({
   },
   textContainer: {
     height: 100,
-    borderColor: '#000',
-    borderWidth: 1,
-    borderRadius: 10,
     margin: 10,
   },
   textStyle: {
-    textAlign: 'center'
+    textAlign: "center"
   },
 });
