@@ -1,85 +1,151 @@
 import React from 'react'
-import { StyleSheet, Text, View, Button, Alert, ScrollView, TouchableOpacity, Image } from 'react-native';
-import favicon from './assets/favicon.png'
-export default function App() {
-  const custAlert = () => {
-    Alert.alert('Jsx 밖에서 함수 구현 기능 ')
-  }
+import main from './assets/main.png'
+import { StyleSheet, Text, View, ScrollView, TouchableOpacity, Image } from 'react-native';
 
-  const custAlert3 = () => {
-    Alert.alert('Touch able Opacity 에도 onPress 속성이 있습니다. ')
-  }
+
+// 작은이미지 피자
+// https://firebasestorage.googleapis.com/v0/b/sparta-image.appspot.com/o/lecture%2Fpizza.png?alt=media&token=1a099927-d818-45d4-b48a-7906fd0d2ad3
+
+export default function App() {
+
+  console.disableYellowBox = true;
 
   return (
 
-    <View style={styles.container}>
-      <View style={styles.cont1}>        
-      </View>
-      <View style={styles.cont2}>   
-        <View style={styles.innerOne}>
+    <ScrollView style={styles.container}>
+      <Text style={styles.title}>나만의 꿀팁</Text>
+      <Image style={styles.mainImage} source={main}/>
+      <ScrollView style={styles.middleContainer} horizontal indicatorStyle={'white'}>
+        <TouchableOpacity style={styles.middleButton01}><Text style={styles.middleButtonText}>생활</Text></TouchableOpacity>
+        <TouchableOpacity style={styles.middleButton02}><Text style={styles.middleButtonText}>재테크</Text></TouchableOpacity>
+        <TouchableOpacity style={styles.middleButton03}><Text style={styles.middleButtonText}>반려견</Text></TouchableOpacity>
+        <TouchableOpacity style={styles.middleButton04}><Text style={styles.middleButtonText}>꿀팁 찜</Text></TouchableOpacity>
+      </ScrollView>
+
+
+      <View style={styles.cardContainer}>
+        <View style={styles.card}>    
+          <Image style={styles.cardImage} source={{uri:'https://firebasestorage.googleapis.com/v0/b/sparta-image.appspot.com/o/lecture%2Fpizza.png?alt=media&token=1a099927-d818-45d4-b48a-7906fd0d2ad3'}} />
+          <View style={styles.cardText}>
+            <Text style={styles.cardTitle}>먹다 남은 피자를 촉촉하게</Text>
+            <Text style={styles.cardDesc} numberOfLines={3}>먹다 남은 피자는 수분이 날라가기 때문에 처음처럼 맛있게 먹을 수 없는데요. 이럴 경우 그릇에 물을 받아 전자레인지 안에서 1분 30초에서 2분 정도 함께 돌려주면 촉촉하게 먹을 수 있습니다. 물이 전자레인지 안에서 수증기를 일으키고, 피자에 촉촉함을 더해줍니다.</Text>
+            <Text style={styles.cardDate}>2020.09.09</Text>
+          </View>
         </View>
-        <View style={styles.innerTwo}>
-        </View>
-
       </View>
-    </View>
-
-
-
-
+    </ScrollView>
   );
 }
+
+
 const styles = StyleSheet.create({
   container: {
-    //영역을 잡는 속성입니다. 따로 자세히 다룹니다.
-    //flex: 1은 전체 화면을 가져간다는 뜻입니다
-    flex: 1,
-    //영역의 배경 색을 결정합니다
+    //앱의 배경 색
     backgroundColor: '#fff',
-    //아래 두 속성은 영역 안의 컨텐츠들의 배치를 결정합니다.
-    //flex를 자세히 다룰때 같이 자세히 다룹니다
-    justifyContent: "center",
-    alignContent: "center"
   },
-  cont1: {
-    flex: 1,
-    backgroundColor: 'red',
-  },
-  cont2: {
-    flex: 2,
-    backgroundColor: 'yellow',
-    flexDirection:"row",
-  },
-  innerOne: {
-    flex: 1,
-    backgroundColor: "blue"
-  },
-  innerTwo: {
-    flex: 4,
-    backgroundColor: "orange"
-  },
-  textContainer: {
-    //영역의 바깥 공간 이격을 뜻합니다(하단 이미지 참조)
-    margin: 30,
-    //영역 안의 컨텐츠 이격 공간을 뜻합니다(하단 이미지 참조)
-    padding: 20,
-    //테두리의 구부러짐을 결정합니다. 지금 보면 조금 둥글죠?
-    borderRadius: 10,
-    //테두리의 두께를 결정합니다
-    borderWidth: 2,
-    //테두리 색을 결정합니다
-    borderColor: "#000",
-    //테구리 스타일을 결정합니다. 실선은 solid 입니다
-    borderStyle: "dotted",
-  },
-  textStyle: {
-    //글자 색을 결정합니다. rgb, 값 이름, 색상코드 모두 가능합니다
-    color: "red",
-    //글자의 크기를 결정합니다
+  title: {
+    //폰트 사이즈
     fontSize: 20,
-    //글자의 두께를 결정합니다
-    fontWeight: "700",
-    //가로기준으로 글자의 위치를 결정합니다
-    textAlign: "center"
+    //폰트 두께
+    fontWeight: '700',
+    //위 공간으로 부터 이격
+    marginTop:50,
+	    //왼쪽 공간으로 부터 이격'
+    marginLeft:20
+  },
+  mainImage: {
+    //컨텐츠의 넓이 값
+    width:'90%',
+    //컨텐츠의 높이 값
+    height:200,
+    //컨텐츠의 모서리 구부리기
+    borderRadius:10,
+    marginTop:20,
+    //컨텐츠 자체가 앱에서 어떤 곳에 위치시킬지 결정(정렬기능)
+    //각 속성의 값들은 공식문서에 고대로~ 나와 있음
+    alignSelf:"center"
+  },
+  middleContainer:{
+    marginTop:20,
+    marginLeft:10,
+    height:60
+  },
+  middleButton01: {
+    width:100,
+    height:50,
+    padding:15,
+    backgroundColor:"#fdc453",
+    borderColor:"deeppink",
+    borderRadius:15,
+    margin:7
+  },
+  middleButton02: {
+    width:100,
+    height:50,
+    padding:15,
+    backgroundColor:"#fe8d6f",
+    borderRadius:15,
+    margin:7
+  },
+  middleButton03: {
+    width:100,
+    height:50,
+    padding:15,
+    backgroundColor:"#9adbc5",
+    borderRadius:15,
+    margin:7
+  },
+  middleButton04: {
+    width:100,
+    height:50,
+    padding:15,
+    backgroundColor:"#f886a8",
+    borderRadius:15,
+    margin:7
+  },
+  middleButtonText: {
+    color:"#fff",
+    fontWeight:"700",
+    //텍스트의 현재 위치에서의 정렬 
+    textAlign:"center"
+  },
+  cardContainer: {
+    marginTop:10,
+    marginLeft:10
+  },
+  card:{
+    flex:1,
+    //컨텐츠들을 가로로 나열
+    //세로로 나열은 column <- 디폴트 값임 
+    flexDirection:"row",
+    margin:10,
+    borderBottomWidth:0.5,
+    borderBottomColor:"#eee",
+    paddingBottom:10
+
+  },
+  cardImage: {
+    flex:1,
+    width:100,
+    height:100,
+    borderRadius:10,
+  },
+  cardText: {
+    flex:2,
+    flexDirection:"column",
+    marginLeft:10,
+  },
+  cardTitle: {
+    fontSize:20,
+    fontWeight:"700"
+  },
+  cardDesc: {
+    fontSize:15
+  },
+  cardDate: {
+    fontSize:10,
+    color:"#A6A6A6",
   }
+
+
 });
