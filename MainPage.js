@@ -6,7 +6,7 @@ import Card from '../Components/Card';
 import Loading from '../Components/Loading'
 import { StatusBar } from 'expo-status-bar'
 
-export default function MainPage() {
+export default function MainPage({navigation, route}) {
 
   console.disableYellowBox = true;
 
@@ -40,11 +40,12 @@ export default function MainPage() {
 
     <ScrollView style={styles.container}>
       <StatusBar style="black" />
-      <Text style={styles.title}>나만의 꿀팁</Text>
+      {/* <Text style={styles.title}>나만의 꿀팁</Text> */}
       <Text style={styles.weather}>오늘의 날씨: {todayWeather + 'C' +  todayCondition} </Text>
       <Image style={styles.mainImage} source={main}/>
-      <ScrollView style={styles.middleContainer} horizontal indicatorStyle={'white'}>
 
+
+      <ScrollView style={styles.middleContainer} horizontal indicatorStyle={'white'}>
         <TouchableOpacity style={styles.middleButtonAll} onPress={()=>{category("전체보기")}}><Text style={styles.middleButtonTextAll}>전체보기</Text></TouchableOpacity>
         <TouchableOpacity style={styles.middleButton01} onPress={()=>{category("생활")}}><Text style={styles.middleButtonText}>생활</Text></TouchableOpacity>
         <TouchableOpacity style={styles.middleButton02} onPress={() => { category("재테크") }}><Text style={styles.middleButtonText}>재테크</Text></TouchableOpacity>
@@ -55,7 +56,7 @@ export default function MainPage() {
       <View style={styles.cardContainer}>
         {
           cateState.map((content,i)=>{
-            return(<Card content={content} key={i}/>)
+            return(<Card content={content} key={i} navigation={navigation}/>)
           })
         }
       </View>
