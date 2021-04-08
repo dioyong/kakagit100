@@ -42,6 +42,7 @@ export default function MainPage({navigation, route}) {
       <StatusBar style="black" />
       {/* <Text style={styles.title}>나만의 꿀팁</Text> */}
       <Text style={styles.weather}>오늘의 날씨: {todayWeather + 'C' +  todayCondition} </Text>
+      <TouchableOpacity style={styles.middleButton05} onPress={()=>{ navigation.navigate("AboutPage") }}><Text style={styles.middleButtonText}>소개페이지</Text></TouchableOpacity>
       <Image style={styles.mainImage} source={main}/>
 
 
@@ -162,6 +163,16 @@ const styles = StyleSheet.create({
     borderRadius:15,
     margin:7
   },
+  middleButton05: {
+    width:100,
+    height:50,
+    padding:15,
+    backgroundColor:"#f886a8",
+    borderRadius:15,
+    margin:7,
+    marginRight:20,
+    alignSelf:"flex-end"
+  },  
   middleButtonTextAll: {
     color:"#fff",
     fontWeight:"700",
