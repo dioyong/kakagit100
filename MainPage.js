@@ -7,6 +7,8 @@ import Loading from '../Components/Loading'
 import { StatusBar } from 'expo-status-bar'
 import * as location from "expo-location";
 import axios from "axios"
+import {firebase_db} from "../firebaseConfig"
+
 
 export default function MainPage({navigation, route}) {
 
@@ -22,18 +24,45 @@ export default function MainPage({navigation, route}) {
   })
 
   useEffect(()=>{
+	   
+    //뒤의 1000 숫자는 1초를 뜻함
+    //1초 뒤에 실행되는 코드들이 담겨 있는 함수
     setTimeout(()=>{
         //헤더의 타이틀 변경
         navigation.setOptions({
-          title:'나만의 꿀팁'
-      })
-      let tip = data.tip;
-      setState(tip)
-      setCateState(tip)
-      getLocation()
-      setReady(false)
-    },1000)    
-  },[])
+            title:'나만의 꿀팁'
+        })
+        firebase_db.ref('/tip').once('value').then((snapshot) => {
+          console.log("파이어베이스에서 데이터 가져왔습니다!!")
+          let tip = snapshot.val();
+          setState(tip)
+          setCateState(tip)
+          //getLocation()
+          setReady(false)
+        });
+        // setTimeout(()=>{
+        //     let tip = data.tip;
+        //     setState(tip)
+        //     setCateState(tip)
+        //     getLocation()
+        //     setReady(false)
+        // },500)
+    },1000)
+
+
+  // useEffect(()=>{
+  //   setTimeout(()=>{
+  //       //헤더의 타이틀 변경
+  //       navigation.setOptions({
+  //         title:'나만의 꿀팁'
+  //     })
+  //     let tip = data.tip;
+  //     setState(tip)
+  //     setCateState(tip)
+  //     getLocation()
+  //     setReady(false)
+  //   },1000)    
+  // },[])
 
   const getLocation = async () => {
     //수많은 로직중에 에러가 발생하면
