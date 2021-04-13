@@ -7,7 +7,7 @@ import Loading from '../Components/Loading'
 import { StatusBar } from 'expo-status-bar'
 import * as location from "expo-location";
 import axios from "axios"
-import {firebase_db} from "../firebaseConfig"
+import {firebase_db} from "../firebaseConfig";
 
 
 export default function MainPage({navigation, route}) {
@@ -37,17 +37,11 @@ export default function MainPage({navigation, route}) {
           let tip = snapshot.val();
           setState(tip)
           setCateState(tip)
-          //getLocation()
+          // getLocation()
           setReady(false)
         });
-        // setTimeout(()=>{
-        //     let tip = data.tip;
-        //     setState(tip)
-        //     setCateState(tip)
-        //     getLocation()
-        //     setReady(false)
-        // },500)
-    },1000)
+    },1000)    
+  },[])
 
 
   // useEffect(()=>{

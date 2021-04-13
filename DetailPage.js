@@ -2,6 +2,7 @@ import React,{useState,useEffect} from 'react';
 import { Share } from "react-native";
 import * as Linking from 'expo-linking';
 import { StyleSheet, Text, View, Image, ScrollView,TouchableOpacity,Alert } from 'react-native';
+import { firebase_db } from "../firebaseConfig"
 
 export default function DetailPage({navigation,route})  {
 
@@ -27,8 +28,17 @@ export default function DetailPage({navigation,route})  {
                 shadowColor: "#000",
             },
             headerTintColor: "#fff",
-        })
-        setTip(route.params)
+            })
+        //const 
+        const { idx } = route.params;
+        // console.log('==========================')
+        // console.log(idx)
+        firebase_db.ref('/tip/' + idx).once('value').then((snapshot) => {
+            // console.log(snapshot.val())
+            let tip = snapshot.val();
+            // console.log(tip)
+            setTip(tip)
+        });        
     }, [])
 
 
