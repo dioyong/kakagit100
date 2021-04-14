@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import main from '../assets/main.png'
 import { StyleSheet, Text, View, ScrollView, TouchableOpacity, Image, Alert } from 'react-native';
-import data from '../data.json'
+// import data from '../data.json'
 import Card from '../Components/Card';
 import Loading from '../Components/Loading'
 import { StatusBar } from 'expo-status-bar'
