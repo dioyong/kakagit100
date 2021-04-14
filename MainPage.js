@@ -8,7 +8,7 @@ import { StatusBar } from 'expo-status-bar'
 import * as location from "expo-location";
 import axios from "axios"
 import {firebase_db} from "../firebaseConfig";
-
+// 체크리스트 추가 
 
 export default function MainPage({navigation, route}) {
 
