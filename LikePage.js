@@ -12,9 +12,6 @@ export default function LikePage({navigation, route}) {
   const [tip, setTip] = useState([])
   const [ready,setReady] = useState(true)
   
-
-  
-
   useEffect(()=>{
 	   
     //뒤의 1000 숫자는 1초를 뜻함
@@ -39,6 +36,21 @@ export default function LikePage({navigation, route}) {
     },1000)    
   },[])
 
+  const reload = () => {
+    const user_id = Constants.installationId;
+    firebase_db.ref('/like/' + user_id).once('value').then((snapshot) => {
+      //snapshot에 값이 있는지 없는지 체크하는 exists 함수 사용
+      if (snapshot.exists()) {
+        let tip = snapshot.val();
+        let tip_list = Object.values(tip)
+        setTip(tip_list)
+      } else {
+        setReady(true)
+        setTip([])
+      }
+
+    })
+  }
 
   return ready ? <Loading/> :  (
     <ScrollView style={styles.container}>               
@@ -48,6 +60,7 @@ export default function LikePage({navigation, route}) {
           })
         }      
     </ScrollView>
+    
   );
 }
 
