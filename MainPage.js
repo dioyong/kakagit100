@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import main from '../assets/main.png'
 import { StyleSheet, Text, View, ScrollView, TouchableOpacity, Image, Alert } from 'react-native';
-// import data from '../data.json'
+import data from '../data.json'
 import Card from '../Components/Card';
 import Loading from '../Components/Loading'
 import { StatusBar } from 'expo-status-bar'
@@ -44,20 +44,6 @@ export default function MainPage({navigation, route}) {
   },[])
 
 
-  // useEffect(()=>{
-  //   setTimeout(()=>{
-  //       //헤더의 타이틀 변경
-  //       navigation.setOptions({
-  //         title:'나만의 꿀팁'
-  //     })
-  //     let tip = data.tip;
-  //     setState(tip)
-  //     setCateState(tip)
-  //     getLocation()
-  //     setReady(false)
-  //   },1000)    
-  // },[])
-
   const getLocation = async () => {
     //수많은 로직중에 에러가 발생하면
     //해당 에러를 포착하여 로직을 멈추고,에러를 해결하기 위한 catch 영역 로직이 실행
@@ -73,8 +59,6 @@ export default function MainPage({navigation, route}) {
       Alert.alert("위치를 찾을 수가 없습니다.", "앱을 껏다 켜볼까요?");
     }
   }
-
-
 
   const category = (cate) => {
     if(cate =="전체보기") {
@@ -98,7 +82,6 @@ export default function MainPage({navigation, route}) {
       <Text style={styles.weather}>오늘의 날씨: {todayWeather + 'C ' +  todayCondition} </Text>
       <TouchableOpacity style={styles.middleButton05} onPress={()=>{ navigation.navigate("AboutPage") }}><Text style={styles.middleButtonText}>소개페이지</Text></TouchableOpacity>
       <Image style={styles.mainImage} source={main}/>
-
 
       <ScrollView style={styles.middleContainer} horizontal indicatorStyle={'white'}>
         <TouchableOpacity style={styles.middleButtonAll} onPress={()=>{category("전체보기")}}><Text style={styles.middleButtonTextAll}>전체보기</Text></TouchableOpacity>
