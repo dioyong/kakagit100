@@ -4,9 +4,10 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import * as Location from "expo-location";
 import axios from "axios"
+import { StatusBar } from 'expo-status-bar';
 
 export default function App() {
-
+  console.disableYellowBox = true;
   const [state, setState] = useState([])
   const [ready, setReady] = useState(true)
   const [cateState, setCateState] = useState([])
@@ -15,6 +16,7 @@ export default function App() {
     temp : 0,
     condition : ''
   })
+
   useEffect(()=>{
 	   
     //뒤의 1000 숫자는 1초를 뜻함
@@ -34,19 +36,29 @@ export default function App() {
       console.log('getLocation try start ')
       console.log('================================')
       //자바스크립트 함수의 실행순서를 고정하기 위해 쓰는 async,await
-      // await Location.requestPermissionsAsync();
-      await Location.requestForegroundPermissionsAsync
+      await Location.requestPermissionsAsync();
+      // await Location.LocationPermissionResponse();
+      // await Location.requestForegroundPermissionsAsync
       console.log('requestPermissionsAsync 호출 ')
       const locationData= await Location.getCurrentPositionAsync();
       console.log('getCurrentPositionAsync 호출 ')
-      console.log('latitude ' + locationData['coords']['latitude'])
-      console.log('longitude ' + locationData['coords']['longitude'])
+      console.log('latitude ===' + locationData['coords']['latitude'])
+      console.log('longitude ===' + locationData['coords']['longitude'])
+      const latitude = locationData['coords']['latitude']
+      const longitude = locationData['coords']['longitude']
       const API_KEY = "cfc258c75e1da2149c33daffd07a911d";
       const result = await axios.get(
         `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${API_KEY}&units=metric`
       );
 
       console.log('result' + result)
+
+      temp = result.data.main.temp; 
+      condition = result.data.weather[0].main
+
+      console.log(temp)
+      console.log(condition)
+
     } catch (error) {
       //혹시나 위치를 못가져올 경우를 대비해서, 안내를 준비합니다
       Alert.alert("위치를 찾을 수가 없습니다.", "앱을 껏다 켜볼까요?");
@@ -54,8 +66,10 @@ export default function App() {
   }
 
   return (
+   
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+       <StatusBar style="black" />
+      <Text>{temp}</Text>
       <StatusBar style="auto" />
     </View>
   );
