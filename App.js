@@ -4,26 +4,27 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import * as Location from "expo-location";
 import axios from "axios"
-import { StatusBar } from 'expo-status-bar';
+import Loading from './Loading';
 
 export default function App() {
   console.disableYellowBox = true;
   const [state, setState] = useState([])
   const [ready, setReady] = useState(true)
-  const [cateState, setCateState] = useState([])
+  // const [cateState, setCateState] = useState([])
   //날씨 데이터 상태관리 상태 생성!
   const [weather, setWeather] = useState({
     temp : 0,
     condition : ''
   })
 
+  // useEffect : 화면이 그려진뒤 가장 먼저 실행되어야 할 코드 작성
   useEffect(()=>{
 	   
     //뒤의 1000 숫자는 1초를 뜻함
     //1초 뒤에 실행되는 코드들이 담겨 있는 함수
     setTimeout(()=>{    
         getLocation()
-        // setReady(false)
+        setReady(false)
     },1000)
 
   },[])
@@ -36,12 +37,11 @@ export default function App() {
       console.log('getLocation try start ')
       console.log('================================')
       //자바스크립트 함수의 실행순서를 고정하기 위해 쓰는 async,await
-      await Location.requestPermissionsAsync();
-      // await Location.LocationPermissionResponse();
-      // await Location.requestForegroundPermissionsAsync
+      await Location.requestPermissionsAsync();      
       console.log('requestPermissionsAsync 호출 ')
       const locationData= await Location.getCurrentPositionAsync();
-      console.log('getCurrentPositionAsync 호출 ')
+      // console.log('locationData = ' + locationData)
+      // console.log('getCurrentPositionAsync 호출 ')
       console.log('latitude ===' + locationData['coords']['latitude'])
       console.log('longitude ===' + locationData['coords']['longitude'])
       const latitude = locationData['coords']['latitude']
@@ -53,11 +53,16 @@ export default function App() {
 
       console.log('result' + result)
 
-      temp = result.data.main.temp; 
-      condition = result.data.weather[0].main
-
+      // temp = result.data.main.temp; 
+      // condition = result.data.weather[0].main
+      const temp = result.data.main.temp; 
+      const condition = result.data.weather[0].main
       console.log(temp)
       console.log(condition)
+
+      setWeather({
+        temp, condition
+      })
 
     } catch (error) {
       //혹시나 위치를 못가져올 경우를 대비해서, 안내를 준비합니다
@@ -65,15 +70,18 @@ export default function App() {
     }
   }
 
-  return (
+  return ready ? <Loading/> :  (
+  // return (
    
     <View style={styles.container}>
        <StatusBar style="black" />
-      <Text>{temp}</Text>
+      <Text> 온도 {weather.temp} </Text>
+      <Text> 날씨 {weather.condition} </Text>
       <StatusBar style="auto" />
     </View>
   );
 }
+
 
 const styles = StyleSheet.create({
   container: {
