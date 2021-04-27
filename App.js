@@ -14,7 +14,9 @@ export default function App() {
   //날씨 데이터 상태관리 상태 생성!
   const [weather, setWeather] = useState({
     temp : 0,
-    condition : ''
+    condition : '',
+    country : ''
+
   })
 
   // useEffect : 화면이 그려진뒤 가장 먼저 실행되어야 할 코드 작성
@@ -57,11 +59,14 @@ export default function App() {
       // condition = result.data.weather[0].main
       const temp = result.data.main.temp; 
       const condition = result.data.weather[0].main
+      const country = result.data.sys.country
+
       console.log(temp)
       console.log(condition)
+      console.log(country)
 
       setWeather({
-        temp, condition
+        temp, condition, country
       })
 
     } catch (error) {
@@ -77,6 +82,7 @@ export default function App() {
        <StatusBar style="black" />
       <Text> 온도 {weather.temp} </Text>
       <Text> 날씨 {weather.condition} </Text>
+      <Text> 국가 {weather.country} </Text>
       <StatusBar style="auto" />
     </View>
   );
