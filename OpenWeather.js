@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react'
-// import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-// import * as Location from "expo-location";
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import * as Location from "expo-location";
 import axios from "axios"
 import Loading from '../Loading';
 
-export default function PublicWeather({navigation,route}) {
+export default function OpenWeather({navigation,route}) {
   console.disableYellowBox = true;
   const [state, setState] = useState([])
   const [ready, setReady] = useState(true)
@@ -24,20 +23,14 @@ export default function PublicWeather({navigation,route}) {
     //뒤의 1000 숫자는 1초를 뜻함
     //1초 뒤에 실행되는 코드들이 담겨 있는 함수
     setTimeout(()=>{    
-        // getLocation()
-        getPublicWeather()
+      navigation.setOptions({
+        title:'OpenWeather API 사용'
+    })      
+        getLocation()
         setReady(false)
     },1000)
 
   },[])
-
-
-  const getPublicWeather = async () => {
-    console.log('latitude ===' + route.params.coords.latitude)
-    console.log('longitude ===' + route.params.coords.longitude)
-    // const latitude = locationData['coords']['latitude']
-    // const longitude = locationData['coords']['longitude']
-  }
 
   const getLocation = async () => {
     //수많은 로직중에 에러가 발생하면
@@ -57,26 +50,11 @@ export default function PublicWeather({navigation,route}) {
       const latitude = locationData['coords']['latitude']
       const longitude = locationData['coords']['longitude']
       const API_KEY = "cfc258c75e1da2149c33daffd07a911d";
-      // const API_KEY = "U7qKEve%2FGHlHAPs3oe17BXEejPMh%2FFqk3FT14Zg5t3vEVkMMYMnrRHCUKYkB3GQFAdjjAluv%2FCX%2BADPZZmnSDA%3D%3D";
       const result = await axios.get(
         `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${API_KEY}&units=metric`
       );
 
-
-
-    //            http://apis.data.go.kr/1360000/VilageFcstInfoService/getUltraSrtNcst
-    // var url = 'http://apis.data.go.kr/1360000/VilageFcstInfoService/getVilageFcst';
-    // var queryParams = '?' + encodeURIComponent('ServiceKey') + '=서비스키'; /* Service Key*/
-    // queryParams += '&' + encodeURIComponent('pageNo') + '=' + encodeURIComponent('1'); /* */
-    // queryParams += '&' + encodeURIComponent('numOfRows') + '=' + encodeURIComponent('10'); /* */
-    // queryParams += '&' + encodeURIComponent('dataType') + '=' + encodeURIComponent('XML'); /* */
-    // queryParams += '&' + encodeURIComponent('base_date') + '=' + encodeURIComponent('20151201'); /* */
-    // queryParams += '&' + encodeURIComponent('base_time') + '=' + encodeURIComponent('0500'); /* */
-    // queryParams += '&' + encodeURIComponent('nx') + '=' + encodeURIComponent('1'); /* */
-    // queryParams += '&' + encodeURIComponent('ny') + '=' + encodeURIComponent('1'); /* */
-    
-
-    // console.log('result' + result)
+      console.log('result' + result)
 
       // temp = result.data.main.temp; 
       // condition = result.data.weather[0].main
@@ -102,13 +80,21 @@ export default function PublicWeather({navigation,route}) {
   // return (
    
     <View style={styles.container}>
-       <Text> 동네예보 조회서비스</Text>
-      <Text> 온도  </Text>
-      <Text> 날씨  </Text>
-      <Text> 국가  </Text>    
-      {/* <Text> 국가 {weather.country} </Text>     */}
+       {/* <StatusBar style="black" /> */}
+       <Text> https://openweathermap.org/current </Text>
+      <Text> 온도 {weather.temp} </Text>
+      <Text> 날씨 {weather.condition} </Text>
+      <Text> 국가 {weather.country} </Text>
+      {/* <StatusBar style="auto" /> */}
+
+      <TouchableOpacity style={styles.card} onPress={()=>{navigation.navigate('PublicWeather',locationData)}}>Public Weather</TouchableOpacity>
     </View>
-    
+
+
+
+
+
+
   );
 }
 
