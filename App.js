@@ -16,7 +16,6 @@ export default function App() {
       <StatusBar style='black' />
       <StackNavigator/>
     </NavigationContainer>
-  // <OpenWeather/> 
   
   );
 }
