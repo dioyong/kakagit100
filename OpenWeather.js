@@ -8,6 +8,7 @@ export default function OpenWeather({navigation,route}) {
   console.disableYellowBox = true;
   const [state, setState] = useState([])
   const [ready, setReady] = useState(true)
+  const weather_icon = ['sun','rain','cloud','wind','mist']
   // const [cateState, setCateState] = useState([])
   //날씨 데이터 상태관리 상태 생성!
   const [weather, setWeather] = useState({
@@ -16,6 +17,8 @@ export default function OpenWeather({navigation,route}) {
     country : ''
 
   })
+
+  const position = []
 
   // useEffect : 화면이 그려진뒤 가장 먼저 실행되어야 할 코드 작성
   useEffect(()=>{
@@ -55,6 +58,8 @@ export default function OpenWeather({navigation,route}) {
       );
 
       console.log('result' + result)
+      position[0] = latitude
+      position[1] = longitude
 
       // temp = result.data.main.temp; 
       // condition = result.data.weather[0].main
@@ -65,6 +70,11 @@ export default function OpenWeather({navigation,route}) {
       console.log(temp)
       console.log(condition)
       console.log(country)
+
+      // weather_icon.map((value,i)=> {
+      //   if(value==condition) 
+      //     console.log(value)
+      // })
 
       setWeather({
         temp, condition, country
@@ -81,19 +91,14 @@ export default function OpenWeather({navigation,route}) {
    
     <View style={styles.container}>
        {/* <StatusBar style="black" /> */}
-       <Text> https://openweathermap.org/current </Text>
+      <Text> https://openweathermap.org/current </Text>
       <Text> 온도 {weather.temp} </Text>
       <Text> 날씨 {weather.condition} </Text>
       <Text> 국가 {weather.country} </Text>
       {/* <StatusBar style="auto" /> */}
 
-      <TouchableOpacity style={styles.card} onPress={()=>{navigation.navigate('PublicWeather',locationData)}}>Public Weather</TouchableOpacity>
+      <TouchableOpacity style={styles.card} onPress={()=>{navigation.navigate('PublicWeather',position)}}>Public Weather</TouchableOpacity>
     </View>
-
-
-
-
-
 
   );
 }
