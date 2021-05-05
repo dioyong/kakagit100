@@ -3,12 +3,13 @@ import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import * as Location from "expo-location";
 import axios from "axios"
 import Loading from '../Loading';
+import sun from "./assets/icon/sun.png"
 
 export default function OpenWeather({navigation,route}) {
   console.disableYellowBox = true;
   const [state, setState] = useState([])
   const [ready, setReady] = useState(true)
-  const weather_icon = ['sun','rain','cloud','wind','mist']
+  const weather_icon = ['Sun','Rain','Cloud','Wind','Mist']
   // const [cateState, setCateState] = useState([])
   //날씨 데이터 상태관리 상태 생성!
   const [weather, setWeather] = useState({
@@ -67,14 +68,14 @@ export default function OpenWeather({navigation,route}) {
       const condition = result.data.weather[0].main
       const country = result.data.sys.country
 
-      console.log(temp)
-      console.log(condition)
-      console.log(country)
+      console.log('temp = ' + temp)
+      console.log('condition = ' + condition)
+      console.log('country = ' + country)
 
-      // weather_icon.map((value,i)=> {
-      //   if(value==condition) 
-      //     console.log(value)
-      // })
+      weather_icon.map((value,i)=> {
+        if(value==condition) 
+          console.log(value)
+      })
 
       setWeather({
         temp, condition, country
@@ -94,6 +95,7 @@ export default function OpenWeather({navigation,route}) {
       <Text> https://openweathermap.org/current </Text>
       <Text> 온도 {weather.temp} </Text>
       <Text> 날씨 {weather.condition} </Text>
+      <Image style={styles.mainImage} source={sun}/>
       <Text> 국가 {weather.country} </Text>
       {/* <StatusBar style="auto" /> */}
 
@@ -111,5 +113,17 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  mainImage: {
+    //컨텐츠의 넓이 값
+    width:'90%',
+    //컨텐츠의 높이 값
+    height:200,
+    //컨텐츠의 모서리 구부리기
+    borderRadius:10,
+    marginTop:20,
+    //컨텐츠 자체가 앱에서 어떤 곳에 위치시킬지 결정(정렬기능)
+    //각 속성의 값들은 공식문서에 고대로~ 나와 있음
+    alignSelf:"center"
+  },  
 });
 
