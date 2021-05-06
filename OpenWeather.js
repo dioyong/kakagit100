@@ -83,7 +83,7 @@ export default function OpenWeather({navigation,route}) {
         if(value == condition) {
           console.log('I value = ' + value)
           weatherIcon = condition
-          console.log(' weatherIcon = ' + weatherIcon)          
+          console.log('weatherIcon = ' + weatherIcon)          
         }
       })
 
