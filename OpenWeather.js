@@ -1,15 +1,20 @@
 import React, { useEffect, useState } from 'react'
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
 import * as Location from "expo-location";
 import axios from "axios"
 import Loading from '../Loading';
-import sun from "./assets/icon/sun.png"
+import Sun from "../assets/icon/sun.png";
+import Rainy from "../assets/icon/rainy.png";
+import Clouds from "../assets/icon/cloud.png";
+
 
 export default function OpenWeather({navigation,route}) {
   console.disableYellowBox = true;
   const [state, setState] = useState([])
   const [ready, setReady] = useState(true)
-  const weather_icon = ['Sun','Rain','Cloud','Wind','Mist']
+  let weatherIcons = ['Sun','Rainy','Clouds','Wind','Mist','Clear']
+  let weatherIcon = ''
+  
   // const [cateState, setCateState] = useState([])
   //날씨 데이터 상태관리 상태 생성!
   const [weather, setWeather] = useState({
@@ -18,6 +23,7 @@ export default function OpenWeather({navigation,route}) {
     country : ''
 
   })
+
 
   const position = []
 
@@ -72,9 +78,13 @@ export default function OpenWeather({navigation,route}) {
       console.log('condition = ' + condition)
       console.log('country = ' + country)
 
-      weather_icon.map((value,i)=> {
-        if(value==condition) 
-          console.log(value)
+      weatherIcons.map((value,i)=> {
+        // console.log('value = ' + value)
+        if(value == condition) {
+          console.log('I value = ' + value)
+          weatherIcon = condition
+          console.log(' weatherIcon = ' + weatherIcon)          
+        }
       })
 
       setWeather({
@@ -95,11 +105,9 @@ export default function OpenWeather({navigation,route}) {
       <Text> https://openweathermap.org/current </Text>
       <Text> 온도 {weather.temp} </Text>
       <Text> 날씨 {weather.condition} </Text>
-      <Image style={styles.mainImage} source={sun}/>
+      <Image  style={styles.weatherIcon} source={weatherIcon}/>
       <Text> 국가 {weather.country} </Text>
-      {/* <StatusBar style="auto" /> */}
-
-      <TouchableOpacity style={styles.card} onPress={()=>{navigation.navigate('PublicWeather',position)}}>Public Weather</TouchableOpacity>
+      {/* <StatusBar style="auto" /> */}      
     </View>
 
   );
@@ -113,11 +121,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  mainImage: {
+  weatherIcon: {
     //컨텐츠의 넓이 값
-    width:'90%',
+    width: 50,
     //컨텐츠의 높이 값
-    height:200,
+    height: 50,
     //컨텐츠의 모서리 구부리기
     borderRadius:10,
     marginTop:20,
