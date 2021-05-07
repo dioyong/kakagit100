@@ -6,7 +6,7 @@ import Loading from '../Loading';
 import Sun from "../assets/icon/sun.png";
 import Rainy from "../assets/icon/rainy.png";
 import Clouds from "../assets/icon/cloud.png";
-
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 export default function OpenWeather({navigation,route}) {
   console.disableYellowBox = true;
@@ -46,8 +46,7 @@ export default function OpenWeather({navigation,route}) {
     //수많은 로직중에 에러가 발생하면
     //해당 에러를 포착하여 로직을 멈추고,에러를 해결하기 위한 catch 영역 로직이 실행
     console.log('getLocation start ')
-    try {
-      console.log('getLocation try start ')
+    try {      
       console.log('================================')
       //자바스크립트 함수의 실행순서를 고정하기 위해 쓰는 async,await
       await Location.requestPermissionsAsync();      
@@ -60,6 +59,7 @@ export default function OpenWeather({navigation,route}) {
       const latitude = locationData['coords']['latitude']
       const longitude = locationData['coords']['longitude']
       const API_KEY = "cfc258c75e1da2149c33daffd07a911d";
+      
       const result = await axios.get(
         `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${API_KEY}&units=metric`
       );
@@ -86,6 +86,8 @@ export default function OpenWeather({navigation,route}) {
           console.log('weatherIcon = ' + weatherIcon)          
         }
       })
+
+      // https://velog.io/@leeeunbin/TIL-React-Native-%EB%82%A0%EC%94%A8%EC%95%B1-%EB%A7%8C%EB%93%A4%EA%B8%B0
 
       setWeather({
         temp, condition, country
