@@ -8,6 +8,7 @@ import Rainy from "../assets/icon/rainy.png";
 import Clouds from "../assets/icon/cloud.png";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
+
 export default function OpenWeather({navigation,route}) {
   console.disableYellowBox = true;
   const [state, setState] = useState([])
@@ -107,7 +108,7 @@ export default function OpenWeather({navigation,route}) {
       <Text> https://openweathermap.org/current </Text>
       <Text> 온도 {weather.temp} </Text>
       <Text> 날씨 {weather.condition} </Text>
-      <Image  style={styles.weatherIcon} source={weatherIcon}/>
+      <Image  style={styles.weatherIcon} source={require('./assets/icon/'+weatherIcon+'.png')}/>
       <Text> 국가 {weather.country} </Text>
       {/* <StatusBar style="auto" /> */}      
     </View>
