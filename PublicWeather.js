@@ -33,8 +33,8 @@ export default function PublicWeather({navigation,route}) {
 
 
   const getPublicWeather = async () => {
-    console.log('latitude ===' + route.params.coords.latitude)
-    console.log('longitude ===' + route.params.coords.longitude)
+    console.log('latitude ===' + route.params[0])
+    console.log('longitude ===' + route.params[1])
     // const latitude = locationData['coords']['latitude']
     // const longitude = locationData['coords']['longitude']
   }
@@ -103,10 +103,10 @@ export default function PublicWeather({navigation,route}) {
    
     <View style={styles.container}>
        <Text> 동네예보 조회서비스</Text>
-      <Text> 온도  </Text>
+      <Text> 온도  {route.params[0]} </Text>
       <Text> 날씨  </Text>
       <Text> 국가  </Text>    
-      {/* <Text> 국가 {weather.country} </Text>     */}
+ 
     </View>
     
   );
