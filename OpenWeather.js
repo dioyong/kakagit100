@@ -14,7 +14,7 @@ export default function OpenWeather({navigation,route}) {
   const [state, setState] = useState([])
   const [ready, setReady] = useState(true)
   let weatherIcons = ['Sun','Rainy','Clouds','Wind','Mist','Clear']
-  let weatherIcon = ''
+  let weatherIcon = 'Clouds'
   
   // const [cateState, setCateState] = useState([])
   //날씨 데이터 상태관리 상태 생성!
@@ -35,7 +35,7 @@ export default function OpenWeather({navigation,route}) {
     //1초 뒤에 실행되는 코드들이 담겨 있는 함수
     setTimeout(()=>{    
       navigation.setOptions({
-        title:'OpenWeather API 사용'
+        title:' OpenWeather API 사용'
     })      
         getLocation()
         setReady(false)
@@ -78,13 +78,20 @@ export default function OpenWeather({navigation,route}) {
       console.log('temp = ' + temp)
       console.log('condition = ' + condition)
       console.log('country = ' + country)
+      weatherIcon = 'Clouds'
+      console.log('weatherIcon = ' + weatherIcon)     
 
       weatherIcons.map((value,i)=> {
         // console.log('value = ' + value)
+        //weatherIcon = require('../assets/icon/Clear.png')
+        // weatherIcon = 'Clouds'
+        // console.log('weatherIcon = ' + weatherIcon)     
+
         if(value == condition) {
           console.log('I value = ' + value)
-          weatherIcon = condition
-          console.log('weatherIcon = ' + weatherIcon)          
+          // weatherIcon = require("../assets/icon/" + condition + ".png");
+          // weatherIcon = require('../assets/icon/Clear.png')
+          // console.log('weatherIcon = ' + weatherIcon)          
         }
       })
 
@@ -108,7 +115,7 @@ export default function OpenWeather({navigation,route}) {
       <Text> https://openweathermap.org/current </Text>
       <Text> 온도 {weather.temp} </Text>
       <Text> 날씨 {weather.condition} </Text>
-      <Image  style={styles.weatherIcon} source={require('./assets/icon/'+weatherIcon+'.png')}/>
+      <Image  style={styles.weatherIcon} source={{weatherIcon}}/>
       <Text> 국가 {weather.country} </Text>
       {/* <StatusBar style="auto" /> */}      
     </View>
