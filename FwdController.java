@@ -27,8 +27,10 @@ public class FwdController {
 		
 		String URL = (String) resultList.get(0).get("urlStr");
 		
+		log4j("URL = " + URL);
 		return "redirect:http://"+URL;
 		
 	}
+
 	
 }
