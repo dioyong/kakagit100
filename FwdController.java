@@ -13,6 +13,7 @@ import cpservice.fwd.service.FwdService;
 import cpservice.fwd.service.FwdVO;
 import egovframework.rte.psl.dataaccess.util.EgovMap;
 
+
 @Controller
 public class FwdController {
 
@@ -27,10 +28,29 @@ public class FwdController {
 		
 		String URL = (String) resultList.get(0).get("urlStr");
 		
-		log4j("URL = " + URL);
+		//log4j("URL = " + URL);
 		return "redirect:http://"+URL;
 		
 	}
+	
+	// HttpServletRequest 객체안에 모든 데이터들이 들어가는데 getParameter메소드로 testId 원하는 데이터 가져옴
+	// 제목 클릭 시 상세보기
+	@RequestMapping(value = "/testDetail.do")
+	public String viewForm(@ModelAttribute("searchVO") TestVO searchVO, Model model, HttpServletRequest request)
+			throws Exception {
+
+		int testId = Integer.parseInt(request.getParameter("testId"));
+		testVO.setTestId(testId);
+
+		searchVO resultVO = testServiceImpl.selectDetail(testVO);
+		model.addAttribute("result", resultVO);
+
+		return "test/testDetail";
+	}	
+	
+	
+	
+	
 
 	
 }
