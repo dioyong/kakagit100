@@ -3,6 +3,7 @@ package cpservice.fwd.web;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -33,24 +34,54 @@ public class FwdController {
 		
 	}
 	
-	// HttpServletRequest 객체안에 모든 데이터들이 들어가는데 getParameter메소드로 testId 원하는 데이터 가져옴
-	// 제목 클릭 시 상세보기
-	@RequestMapping(value = "/testDetail.do")
-	public String viewForm(@ModelAttribute("searchVO") TestVO searchVO, Model model, HttpServletRequest request)
-			throws Exception {
-
-		int testId = Integer.parseInt(request.getParameter("testId"));
-		testVO.setTestId(testId);
-
-		searchVO resultVO = testServiceImpl.selectDetail(testVO);
-		model.addAttribute("result", resultVO);
-
-		return "test/testDetail";
-	}	
+	// 글 작성 클릭시 글 작성 페이지로 이동
+	@RequestMapping(value = "/Register.do")
+	public String Register() {
+		return "Register";
+	}		
 	
+	@RequestMapping(value = "/boardList.do")
+	public String boardList(@ModelAttribute("searchVO") FwdVO searchVO, ModelMap model) throws Exception {
+		List<EgovMap> boardList = fwdService.selectBoardList(searchVO);
+		
+		model.addAttribute("boardList", boardList);
+		
+	  return "/boardList";
+	}		
+		
+	@RequestMapping(value = "/boardDetail.do")
+//	public String boardDetail(@ModelAttribute("searchVO") FwdVO searchVO, HttpServletRequest request, ModelMap model) throws Exception {
+//	public String boardDetail(ModelMap model, int seq) {
 	
+	public String boardDetail(@ModelAttribute("searchVO") FwdVO searchVO, ModelMap model) throws Exception {
+		
+		searchVO.getSeq();
+		
+		//		List<EgovMap> boardDetail = fwdService.selectBoardDetail(searchVO);	
+		
+//		FwdVO boardDetail = fwdService.selectBoardDetail(seq);
+//		String seq = request.getParameter("seq");
+//		int seqInt = Integer.parseInt(seq);
+//		searchVO.setSeq(seqInt);
+//		
+//		List<EgovMap> boardDetail = fwdService.selectBoardDetail(searchVO);
+//		
+//		try {
+//			List<EgovMap> boardDetail = fwdService.selectBoardDetail(searchVO);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+		
+//		model.addAttribute("boardDetail", boardDetail);
+		
+		return "boardDetail";
+	}		
 	
-	
-
+	@RequestMapping(value = "/testList.do")
+	public String testListDo() {
+	  
+		System.out.println("abc");
+	  return "/testList";
+	}		
 	
 }
