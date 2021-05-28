@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- 카톡에 링크 공유시 이미지 타이틀 설명 부분  -->
+        <meta property="og:title" content="신년운세 by 르탄!"/>
+        <meta property="og:description" content="2021년 띠 별 운세를 알려드립니다"/>
+        <meta property="og:image" content="https://new-year.spartacodingclub.kr/images/ogimage.png"/>
+        <!-- 파비콘  -->
+        <link rel="shortcut icon" href="https://new-year.spartacodingclub.kr/images/favicon.png">
+    
+        !-- datepicker 는 jquery 1.7.1 이상 bootstrap 2.0.4 이상 버전이 필요함 -->
+        <!-- jQuery가 먼저 로드 된 후 datepicker가 로드 되어야함.-->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" >
+        <link rel="stylesheet" href="resources/css/plugin/datepicker/bootstrap-datepicker.css">
+        
+        <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+        <script src="resources/js/plugin/datepicker/bootstrap-datepicker.js"></script>
+        
+        
+        <!--한국어  달력 쓰려면 추가 로드-->
+        <!-- <script src="resources/js/plugin/datepicker/bootstrap-datepicker.ko.min.js"></script> --> 
+
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Yeon+Sung&display=swap" rel="stylesheet">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>2021년 신년운세!!!</title>
+        <script type="text/javascript" src="https://new-year.spartacodingclub.kr/newyear.js"></script>
+        <style>
+            .mytitle {
+                color: darkred;
+                text-align: center;
+                margin-top: 100px;
+                margin-bottom: 50px;
+            }
+
+            @media screen and (max-width: 780) {
+            body {
+                background-position: 70px -70px;
+                background-size: 500px;
+            }
+            .rtans {
+                width: 100%;
+            }
+            .mytitle {
+                margin-top: 20px;
+                margin-bottom: 20px;
+            }
+            .rtans > a {
+                color: darkred;
+            }
+
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="mytitle">
+        <h1>
+            2021년 신년운세</h1>
+        <h2>by 르탄, 믿거나 말거나~</h2>
+    </div>
+
+
+        <!-- 시작시 기본 날짜 설정은 value를 이용 -->
+        <input type="text" id="datePicker" class="form-control" value="2019-06-27">
+</body>
+
+</html>    
