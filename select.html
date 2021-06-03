@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="Content-Script-Type" content="text/javascript">
+    <meta http-equiv="Content-Style-Type" content="text/css">
+    <title>HTML 4.01 문서타입</title>
+    <link rel="stylesheet" type="text/css" href="css/service_name.css">
+    <script>
+
+        function createSelectBox() {
+            var opts = { "1": "Apple", "2": "Mango", "3": "Melon" };
+            var obj = document.createElement("SELECT");
+            for (key in opts) {
+                var opt = document.createElement("OPTION");
+                opt.value = key;
+                opt.text = opts[key];
+                obj.options.add(opt);
+            }
+
+            obj.id = 'iSelectBox';
+            document.body.appendChild(obj);
+        }
+
+        function addOptionSelectBox() {
+            var opts = { "4": "Orange" };
+            var obj = document.getElementById('iSelectBox');
+            for (key in opts) {
+                var opt = document.createElement("OPTION");
+                opt.value = key;
+                opt.text = opts[key];
+                obj.options.add(opt);
+            }
+        }
+
+        function removeOptionSelectBox() {
+            var obj = document.getElementById('iSelectBox');
+            obj.options.remove(obj.length - 1);
+        }
+
+
+            $.each(selectValues, function (key, value) { $('#mySelect').append($("<option></option>").attr("value", key).text(value)); });
+
+</script>
+    
+</head>
+<body> 
+
+<button onclick="createSelectBox()">SelectBox 생성</button>
+
+<button onclick="addOptionSelectBox()">SelectBox 옵션추가</button>
+
+<button onclick="removeOptionSelectBox()">SelectBox 마지막옵션삭제</button>
+
+
+배열이나 등등의 방법으로 저장된 데이터를
+select box 에 넣는다. 
+
+불러올때 선택한 값이 선택 되어 있어야 한다. 
+
+<table>
+    <tr>
+        <td>
+            <a href=""></a>
+        </td>
+    </tr>
+</table>
+
+    
+</body>
+
+</html>
