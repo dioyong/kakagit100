@@ -25,6 +25,71 @@
             width: 50%;
             height: 300px;
         }
+        .siren{
+            background-color: rgba(201, 166, 228, 0.22);
+            background-color: #fff;
+        }   
+        .warining{
+            position: relative;
+            background-color: #EAFBE2;
+            padding: 25px 20px 20px 38px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            color: #666;
+            border: 1px solid #eaeaea;
+            background-color: #fff;
+            border: 8px solid #dcdcdc;
+            border-top-color: transparent;
+            border-left-color: transparent;
+            transition: all 1s;
+        }
+        .warning:before {
+            position: absolute;
+            content: "";
+            left: 0;
+            top: -25px;
+            font-size: 35px;
+            text-align: center;
+            vertical-align: middle;
+            font-family: FontAwesome;
+            /* content: "\f071"; */
+            content: "WARNING";
+            color: #AEF0B0;
+            color: #c7254e;
+            font-size: 35px;
+            text-align: center;
+            font-weight: bold;
+        }
+        .post-content p {
+            color: #353535 !important;
+            font-size: 12pt !important;
+            letter-spacing: 0.02em;
+            margin: 7px 0;
+            font-family: 'Youth','Jeju Gothic', "나눔바른고딕","나눔고딕";
+        }        
+        .siren:after {
+            content: "";
+            position: absolute;
+            top: -10px;
+            left: 100px;
+            right: -8px;
+            border: 8px solid #dcdcdc;
+            border-left-color: transparent;
+            border-bottom-color: transparent;
+        }
+        .siren:before {
+            content: "ALERT";
+            left: 0;
+            top: -23px;
+            color: #f11f67;
+            font-family: CJ_title_Bold;
+            font-size: 30px;
+        }   
+        *:before, *:after {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }             
     </style>
 </head>
 <body> 
@@ -53,6 +118,15 @@
 </div>
 <div class="n2">
     abc
+</div>
+
+<br>
+<div class="warning siren">
+    ::before
+    <p>
+        문서형(DTD) 정의를 생략하는 경우 웹 브라우저가 표준모드가 아니라 비표준모드(Quirks mode)로 렌더링되어 크로스 브라우징에 어려움을 겪을 수 있습니다.
+    </p>
+    ::after
 </div>
 </html>
 
