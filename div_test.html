@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="Content-Script-Type" content="text/javascript">
+    <meta http-equiv="Content-Style-Type" content="text/css">
+    <title>HTML 4.01 문서타입</title>
+    <link rel="stylesheet" type="text/css" href="css/service_name.css">
+    <style type="text/css">
+
+    .warning {
+		position: relative;
+		background-color: #EAFBE2;
+		padding: 25px 20px 20px 38px;
+		border-radius: 5px;
+		margin-bottom: 15px;
+		color: #666;
+		border: 1px solid #eaeaea;
+		background-color: #fff;
+		border: 8px solid #dcdcdc;
+		border-top-color: transparent;
+		border-left-color: transparent;
+		transition: all 1s;
+    }
+    .siren::before {
+        content: "ALERT";
+        left: 0;
+        top: -23px;
+        color: #f11f67;
+        font-family: CJ_title_Bold;
+        font-size: 30px;
+    }
+    .siren{
+        background-color: rgba(201, 166, 228, 0.22);
+        background-color: #fff;
+    }   
+    p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+    .warning::before {
+            position:absolute;
+            content:"INFO";
+            left:0;
+            top:-25px;
+            font-size:35px;
+            text-align: center;
+            vertical-align: middle;
+            font-family:FontAwesome;
+            content: "WARNING";
+            color:#AEF0B0;
+            color:#c7254e;
+            font-size:35px;
+            text-align:center;
+            font-weight:bold;
+        }   
+        .warning p {
+            color:#4a4a4a !important;
+        }               
+
+
+        q::before {
+        content: "«";
+        color: blue;
+        }
+
+        q::after {
+        content: "»";
+        color: red;
+        }
+        a::before {
+        content: "♥";
+        }
+
+        .ribbon {
+            background-color: #5BC8F7;
+        }
+
+        .ribbon::before {
+            content: "Look at this orange box.";
+            background-color: #FFBA10;
+            border-color: black;
+            border-style: dotted;
+        }
+
+    </style>
+    
+</head>
+<body> 
+    <div class="warning siren">
+        <p>
+        문서형(DTD) 정의를 생략하는 경우 웹 브라우저가 표준모드가 아니라 비표준모드(Quirks mode)로 렌더링되어 크로스 브라우징에 어려움을 겪을 수 있습니다.
+        </p>
+    </div>
+
+    <div class="siren">
+        siren 
+    </div>    
+
+    <div class="siren">
+        볼매
+    </div>  
+    <q>Some quotes,</q> he said, <q>are better than none.</q>
+  <a href="naver.com"> naver</a>
+
+  <br>
+  <span class="ribbon">Notice where the orange box is.</span>
+</body>
+
+</html>
