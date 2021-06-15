@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="Content-Script-Type" content="text/javascript">
+    <meta http-equiv="Content-Style-Type" content="text/css">
+    <title>HTML 4.01 문서타입</title>
+    <link rel="stylesheet" type="text/css" href="css/service_name.css">
+    
+<style>
+#text1 { color: red; }
+#text2 { color: #0A0; }
+#text3 { color: rgb(0, 0, 150); }
+#text4 { color: rgba(30, 150, 100, 0.5); }
+
+#text1 { font-size: 37px }
+		#text2 { font-size: 28px }
+		#text3 { font-size: 19px }
+
+		.bold { font-weight: bold }
+		.italic{ font-style: italic }
+		.jinji{ font-family: "궁서" }
+
+		#text4{ font: italic bold 20px serif; }
+</style>    
+
+</head>
+<body> 
+	<div style="color: red">text1</div>
+	<div style="color: #0A0">text2</div>
+	<div style="color: rgb(0, 0, 150)">text3</div>
+	<div style="color: rgba(0, 140, 170, 0.5)">text4</div>    
+
+
+    <div id="text1">37px</div>
+	<div id="text2">28px</div>
+	<div id="text3">19px</div>
+	<br>
+	<div class="bold">굵은 글씨</div>
+	<div class="italic">기울인 글</div>
+	<div class="jinji">진지한 글꼴</div>
+	<br>
+	<div id="text4">There's no books on my backpack</div>
+</body>
+
+</html>
