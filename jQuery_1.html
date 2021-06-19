@@ -11,18 +11,44 @@
 
     <script>
         $(document).ready( function() {
+            $("div a[target]").css("background", "#aaa");
+            $("div a[href='http://naver.com']").css("background", "#0ff");
+            $("div a[href!='http://naver.com']").css("background", "#fab");
+
+
+            $("<h2> 요소 추가(기존요소 앞)</h2>").prependTo("b");
+            $("b").append("<h2> 요소 추가(기존요소 뒤)</h2>");
+
+            var arr3 = "";
+            $("li").each(function () {
+                arr3 += $(this).text() + " ";
+            });
+
+            console.log(arr3);
             var p = document.getElementsByTagName("p");
             p[0].style.color = "red";
             p[1].style.color = "bleu";
             p[2].style.color = "green";
 
         });
+
+        $("p").eq(1).css("color","aqua");
     </script>
 <style>
 
 </style>    
+
+<li>
+    리스트 1 
+</li>
+
+<dia>
+    Div 영역 
+    <a href="http://naver.com"> 네이버 </a> <br>
+    <a href="http://google.com"> 구글 </a>
+</dia>
 <p>
-    Text 테스트 
+    <b>Text 테스트 </b>
     Jquery 재밌내
 </p>
 
