@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="Content-Script-Type" content="text/javascript">
+    <meta http-equiv="Content-Style-Type" content="text/css">
+    <title>HTML 4.01 문서타입</title>
+    <link rel="stylesheet" type="text/css" href="css/service_name.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script>
+        $(document).ready( function() {
+            
+            $("td").click(function () {
+                alert($(this).text());
+            });
+
+
+            $("#btn").bind("click", function (){
+                console.log(event);
+                alert("버튼 이벤트 처리");
+                $("#btn").unbind('click');
+
+            });
+
+
+            let count = 0;
+            $("#myArea").on("mouseenter mouseleave", function (event) {
+                count++;
+                $("#mResult").text(count + "번 수행");
+                if(event.type === "mouseenter") {
+                    $("#mResult").css("background", "red");
+                }else if(event.type === "mouseleave") {
+                    $("#mResult").css("background", "blue");
+                }
+            });
+
+        });
+    </script>
+<style>
+#mResult{
+    width: 200px;
+    height: 200px;
+}
+
+#myArea{
+    width: 200px;
+    height: 200px;
+    background-color: blue;  
+}
+</style>    
+
+</head>
+<body> 
+    <table>
+        <tr>
+            <td>
+                테이블 td 1
+            </td>
+        </tr>
+    </table>
+    
+
+    <button id="btn">  버튼 </button>
+
+    <div id="myArea">
+        myArea 1
+    </div>
+
+    <div id="mResult">
+        mResult 
+    </div>
+</body>
+
+</html>
