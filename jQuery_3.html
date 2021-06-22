@@ -6,24 +6,39 @@
     <meta http-equiv="Content-Script-Type" content="text/javascript">
     <meta http-equiv="Content-Style-Type" content="text/css">
     <title>HTML 4.01 문서타입</title>
-    <link rel="stylesheet" type="text/css" href="css/service_name.css">
+    <!-- <link rel="stylesheet" type="text/css" href="css/service_name.css"> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
         $(document).ready( function() {
 
-            let end = 4;
+            let end = 3;
 
             // for(let i=1; i>end; i++) {
             //     // $("#link"+i).attr("href", "http://www.naver.com");
             //     $("a").attr("href", "http://www.naver.com");
             // }
-
+            for(let i=1; i<end; i++) {
+                    console.log("abc");
+                    $("#b"+i).css("background-color","red");
+                    
+                    console.log("#b"+i);
+                }
+                $(".box1").css("background-color","blue");
+                $("#b"+end).css("background-color","blue");
 
         });
 
 
     </script>
 <style>
-
+ .box1{
+     width: 30px;
+     height: 30px;
+     background-color: bisque;
+ }
+ .box2{
+     background-color: cadetblue;
+ }
 </style>    
 
 </head>
@@ -31,20 +46,38 @@
     
     <table width="100%" border="1">
         <tr>
-            <td>
-                <a href="#" id="link1">네이버</a>
+            <td class="box2">
+                <a href="#" class="box1" id="link1">네이버</a>
             </td>
             <td>
-                <a href="#" id="link2">구글</a>
+                <a href="#" class="box1" id="link2">구글</a>
             </td>
             <td>
-                <a href="#" id="link3">다음</a>
+                <a href="#" class="box1" id="link3">다음</a>
             </td>
             <td>
-                <a href="#">네이버</a>
+                <a href="#" class="box1">네이버</a>
             </td>
             <td>
-                <a href="#">네이버</a>
+                <a href="#" class="box1">네이버</a>
+            </td>
+        </tr>
+
+        <tr>
+            <td id="b1">
+                Naver
+            </td>
+            <td id="b2">
+                Yahoo
+            </td>
+            <td id="b3">
+                Google
+            </td>
+            <td id="b4">
+
+            </td>
+            <td id="b5">
+
             </td>
         </tr>
 
