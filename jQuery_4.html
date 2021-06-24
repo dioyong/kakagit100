@@ -12,12 +12,12 @@
 
             let count = 0;
 
-            $("button[name='btn1']").click(function () {
-                count = count + 1;
-               
+            $('.btn').click(function () {
+                count = count + 1;               
+                console.log("count = "+ count);
+                $('.btn').css('color','red');
             });
 
-            console.log("count = "+ count);
 
         });
 
