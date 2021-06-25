@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="Content-Script-Type" content="text/javascript">
+    <meta http-equiv="Content-Style-Type" content="text/css">
+    <title>HTML 4.01 문서타입</title>
+    <link rel="stylesheet" type="text/css" href="css/service_name.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+<style>
+      #a {
+        width: 10%;
+        height: 100px;
+        background-color: #bbdefb;
+      }
+</style>    
+<script>
+    $( document ).ready( function() {
+      $( 'button' ).click( function() {
+        $( '#a' ).animate( {
+          width: '100%'
+        } );
+      } );
+    } );
+  </script>
+</head>
+<body> 
+    <p><button>Click!</button></p>
+    <div id="a"></div>
+</body>
+
+</html>
