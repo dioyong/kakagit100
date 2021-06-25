@@ -5,8 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta http-equiv="Content-Script-Type" content="text/javascript">
     <meta http-equiv="Content-Style-Type" content="text/css">
-    <title>HTML 4.01 문서타입</title>
-    <link rel="stylesheet" type="text/css" href="css/service_name.css">
+    <title>HTML 4.01 문서타입</title>    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     
 <style>
@@ -15,20 +14,63 @@
         height: 100px;
         background-color: #bbdefb;
       }
+
+      div {
+        margin: 10px 0px;
+        width: 10%;
+        height: 100px;
+        background-color: #e3f2fd;
+      }
+      #b { background-color: #bbdefb; }
+      #c { background-color: #ffcdd2; }      
+
+      #d {
+        width: 10%;
+        height: 100px;
+        background-color: #bbdefb;
+      }      
 </style>    
 <script>
     $( document ).ready( function() {
-      $( 'button' ).click( function() {
+
+        $( '#btn_a' ).click( function() {
         $( '#a' ).animate( {
           width: '100%'
+            } );
         } );
-      } );
+
+        $( '#swing' ).click( function() {
+          $( '#b' ).animate( {
+            width: '100%'
+          }, 2000, 'swing' );
+          $( '#c' ).animate( {
+            width: '100%'
+          }, 2000, 'linear' );
+        } );   
+
     } );
+
+    $( '#min' ).click( function() {
+        console.log("min type");
+          $( '#d' ).animate( {
+            width: '100%'
+          }, 1000, 'swing');
+        });
+
+
   </script>
 </head>
 <body> 
-    <p><button>Click!</button></p>
+    <p><button  id="btn_a">Click!</button></p>
     <div id="a"></div>
+
+    <p><button id="swing">Click!</button></p>
+    <div id="b"></div>
+    <div id="c"></div>
+
+    <p><button id="min">Click!</button></p>
+    <div id="d"></div>
+
 </body>
 
 </html>
