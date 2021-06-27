@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="Content-Script-Type" content="text/javascript">
+    <meta http-equiv="Content-Style-Type" content="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <title>HTML 4.01 문서타입</title>
+    
+<style>
+      #a {
+            width: 100px;
+            height: 100px;
+            background-color: #bbdefb;
+            position: absolute;
+            left: 50px;
+            top:0;
+        }
+
+</style>    
+<script>
+      $( document ).ready( function() {
+        $("#a").slideUp(2000, "linear");
+
+
+      } );
+
+     
+
+</script>
+</head>
+<body> 
+    <p><button id="run">run!</button></p>
+    <div id="a"></div>
+
+</body>
+
+</html>
