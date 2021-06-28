@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="Content-Script-Type" content="text/javascript">
+    <meta http-equiv="Content-Style-Type" content="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <title>HTML 4.01 문서타입</title>
+    
+    
+<style>
+
+</style>    
+
+<script>
+    $(document).ready(function() {
+        $("#alpreah_input").keydown(function(key) {
+            if (key.keyCode == 13) {
+                // alert("엔터키를 눌렀습니다.");
+                $("#alpreah_btn").click();
+            }
+        });
+
+        $("#alpreah_btn").click(function() {
+                alert("버튼을 눌렀습니다~");
+            });
+
+
+    });
+
+</script>
+
+
+</head>
+<body> 
+      <!-- INPUT 태그의 타입은 문자열이고 ID는 alpreah_input 이다. -->
+
+      <input type="text" id="alpreah_input">
+      <button id="alpreah_btn">버튼</button>
+  
+  
+  출처: https://alpreah.tistory.com/101 [생각에 취하는날]
+
+
+</body>
+
+</html>
